@@ -1,6 +1,7 @@
 #include <iostream>
 #include "graph_reader.h"
 #include "dijkstra.h"
+#include"dijkstra_fib.h"
 
 using namespace std;
 
@@ -21,6 +22,11 @@ int main() {
     cout << "dist(1,3) = " << dijkstra(graph, n, 1, 3) << endl;
     cout << "dist(1,4) = " << dijkstra(graph, n, 1, 4) << endl;
     cout << "dist(1,5) = " << dijkstra(graph, n, 1, 5) << endl;
+
+    cout<< "fib dist(1,2) = " << dijkstra_fib(graph, n, 1, 2) << endl;
+    cout<< "fib dist(1,3) = " << dijkstra_fib(graph, n, 1, 3) << endl;
+    cout<< "fib dist(1,4) = " << dijkstra_fib(graph, n, 1, 4) << endl;
+    cout<< "fib dist(1,5) = " << dijkstra_fib(graph, n, 1, 5) << endl;
 
     delete[] graph;   // 释放内存
     return 0;

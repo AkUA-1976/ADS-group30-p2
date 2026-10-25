@@ -1,6 +1,7 @@
 #include <iostream>
 #include "graph_reader.h"
 #include "dijkstra.h"
+#include "dijkstra_fib.h"
 
 using namespace std;
 
@@ -26,6 +27,12 @@ int main() {
     cout << "50000->150000 : " << dijkstra(graph, n, 50000, 150000)
          << "   150000->50000 : " << dijkstra(graph, n, 150000, 50000) << endl;
 
+    cout << "fib 1->100000 : " << dijkstra_fib(graph, n, 1, 100000)
+           << "   100000->1 : " << dijkstra_fib(graph, n, 100000, 1) << endl;
+     cout << "fib 1->200000 : " << dijkstra_fib(graph, n, 1, 200000)
+           << "   200000->1 : " << dijkstra_fib(graph, n, 200000, 1) << endl;
+     cout << "fib 50000->150000 : " << dijkstra_fib(graph, n, 50000, 150000)
+           << "   150000->50000 : " << dijkstra_fib(graph, n, 150000, 50000) << endl;
     delete[] graph;   // 释放内存
     return 0;
 }

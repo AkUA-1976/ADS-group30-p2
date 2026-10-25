@@ -3,6 +3,7 @@
 #include <string>
 #include "graph_reader.h"
 #include "dijkstra.h"
+#include "dijkstra_fib.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -38,12 +39,19 @@ int main() {
         auto t3 = high_resolution_clock::now();
         int64_t dist = dijkstra(graph, n, 1, n);
         auto t4 = high_resolution_clock::now();
+        // ---- 计时 dijkstra_fib（斐波那契堆，同样测 1 -> n）----
+        auto t5 = high_resolution_clock::now();
+        int64_t dist_fib = dijkstra_fib(graph, n, 1, n);
+        auto t6 = high_resolution_clock::now();
+
 
         cout << "---- " << f << " ----" << endl;
         cout << "  n = " << n << ", m = " << m << endl;
         cout << "  read time = " << duration_cast<milliseconds>(t2 - t1).count() << " ms" << endl;
         cout << "  dijkstra(1," << n << ") = " << dist
              << ", time = " << duration_cast<milliseconds>(t4 - t3).count() << " ms" << endl;
+        cout << "  dijkstra_fib(1," << n << ") = " << dist_fib
+             << ", time = " << duration_cast<milliseconds>(t6 - t5).count() << " ms" << endl;
 
         delete[] graph;   // 释放内存
     }
