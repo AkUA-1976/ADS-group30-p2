@@ -62,7 +62,8 @@ void fibonacci_heap::link(fib_node* y, fib_node* x) {
 }
 
 void fibonacci_heap::consolidate() {
-    int maxDegree = static_cast<int>(std::log2(n)) + 2;
+    // 节点度数的上界约为 log_phi(n) ≈ 1.44*log2(n)，这里取 2*log2(n)+2 留足余量
+    int maxDegree = (n > 1) ? static_cast<int>(2 * std::log2(n)) + 2 : 2;
     std::vector<fib_node*> A(maxDegree, nullptr);
     std::vector<fib_node*> rootNodes;
     fib_node* curr = minNode;

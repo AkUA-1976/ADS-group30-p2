@@ -13,11 +13,22 @@ using namespace std;
 //   a u v w    一条有向边：从 u 到 v，长度 w
 vector<node>* read_graph(const string& filename, int& n, int& m)
 {
-    // 打开文件
+    // 打开文件：先按给定路径找，找不到再依次尝试上一级、上两级目录，
+    // 这样从仓库根目录、build/ 或 build/Debug/ 下运行都能找到 data/ 里的图。
     ifstream fin(filename);
     if(!fin.is_open())
     {
-        cout << "Error opening file" << endl;
+        fin.clear();
+        fin.open("../" + filename);
+    }
+    if(!fin.is_open())
+    {
+        fin.clear();
+        fin.open("../../" + filename);
+    }
+    if(!fin.is_open())
+    {
+        cout << "Error opening file: " << filename << endl;
         return nullptr;
     }
 

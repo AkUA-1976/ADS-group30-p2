@@ -7,7 +7,7 @@ using namespace std;
 // 读入 NY 图，并统计邻接表里实际的边数，看是否和 m 一致。
 int main() {
     int n, m;   // 顶点数、边数
-    vector<node>* graph = read_graph("D:/cc1/dimacs-data/USA-road-d.NY.gr", n, m);
+    vector<node>* graph = read_graph("data/USA-road-d.NY.gr", n, m);
     if(graph == nullptr) return 1;   // 读失败直接退出
 
     cout << "number of vertices n = " << n << endl;

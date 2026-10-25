@@ -18,11 +18,11 @@ int main() {
     const unsigned SEED = 42;      // 固定随机种子，保证每次结果可复现
 
     string files[] = {
-        "D:/cc1/dimacs-data/USA-road-d.NY.gr",
-        "D:/cc1/dimacs-data/USA-road-d.COL.gr",
-        "D:/cc1/dimacs-data/USA-road-d.BAY.gr",
-        "D:/cc1/dimacs-data/USA-road-d.CAL.gr",
-        "D:/cc1/dimacs-data/USA-road-d.FLA.gr",
+        "data/USA-road-d.NY.gr",
+        "data/USA-road-d.COL.gr",
+        "data/USA-road-d.BAY.gr",
+        "data/USA-road-d.CAL.gr",
+        "data/USA-road-d.FLA.gr",
     };
 
     for (string f : files) {

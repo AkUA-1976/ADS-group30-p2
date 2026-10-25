@@ -11,7 +11,7 @@ using namespace std;
 // 这里同时算两个方向，看结果是否相等。
 int main() {
     int n, m;
-    vector<node>* graph = read_graph("D:/cc1/dimacs-data/USA-road-d.NY.gr", n, m);
+    vector<node>* graph = read_graph("data/USA-road-d.NY.gr", n, m);
     if (graph == nullptr) return 1;   // 读失败直接退出
 
     cout << "n = " << n << endl;
