@@ -13,17 +13,24 @@ using namespace std::chrono;
 // 性能测试：对 5 个数据集，各跑 1000 对随机查询，
 // 对比二项堆（dijkstra）和斐波那契堆（dijkstra_fib）的耗时与正确性。
 // 正确性：两种堆跑同一批 1000 对查询，累计 checksum 应完全相等。
-int main() {
+int main(int argc, char* argv[]) {
     const int Q = 1000;            // 查询对数
     const unsigned SEED = 42;      // 固定随机种子，保证每次结果可复现
 
-    string files[] = {
-        "data/USA-road-d.NY.gr",
-        "data/USA-road-d.COL.gr",
-        "data/USA-road-d.BAY.gr",
-        "data/USA-road-d.CAL.gr",
-        "data/USA-road-d.FLA.gr",
-    };
+    // 默认测全部 5 个数据集；也可以在命令行指定要测哪些文件，
+    // 例如：perf.exe data/USA-road-d.COL.gr
+    vector<string> files;
+    if (argc > 1) {
+        for (int i = 1; i < argc; i++) files.push_back(argv[i]);
+    } else {
+        files = {
+            "data/USA-road-d.NY.gr",
+            "data/USA-road-d.COL.gr",
+            "data/USA-road-d.BAY.gr",
+            "data/USA-road-d.CAL.gr",
+            "data/USA-road-d.FLA.gr",
+        };
+    }
 
     for (string f : files) {
         // 读图（读图耗时不计入查询计时）
