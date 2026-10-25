@@ -16,13 +16,26 @@ they are placed in `Release/`; with MinGW they are placed in `build/`.
 
 ## Data
 
-Download the five DIMACS road networks from the release:
+The five road networks come from the 9th DIMACS Implementation Challenge
+(Shortest Paths). They can be downloaded from the official page:
 
-https://github.com/AkUA-1976/ADS-group30-p2/releases/tag/dataset
+http://www.dis.uniroma1.it/challenge9/download.shtml
+
+The files used are `USA-road-d.NY.gr`, `USA-road-d.BAY.gr`,
+`USA-road-d.COL.gr`, `USA-road-d.FLA.gr` and `USA-road-d.CAL.gr`. The data
+sets are not part of the submission; only the download link is listed.
 
 Put the `.gr` files in `data/`. The reader also searches `../data/` and
 `../../data/`, so the programs can be run from the repository root, from
 `build/`, or from `build/Release/`.
+
+## Source layout
+
+- `include/`: graph reader, the two heap structures, and the two Dijkstra
+  implementations.
+- `src/`: the implementation files and the four programs.
+- `test/`: the small hand-checkable graph `test.gr`.
+- `report/`: the lab report and its figure (included in the submission zip).
 
 ## Programs
 

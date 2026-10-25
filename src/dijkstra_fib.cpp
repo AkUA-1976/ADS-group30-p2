@@ -1,10 +1,13 @@
+// 斐波那契堆版本的 Dijkstra（真正的 decreaseKey）
+// vertex[v] = -1 表示无穷大；nodes[v] 保存顶点 v 在堆中的结点：
+// 第一次到达 v 时 insert，之后发现更短距离时直接 decreaseKey，堆里不会出现重复项。
 #include "dijkstra_fib.h"
 #include "fibonacci_heap.h"
 #include <vector>
 using namespace std;
 
 int64_t dijkstra_fib(vector<node>* graph, int n, int st, int ed) {
-    if (st == ed) return 0;
+    if (st == ed) return 0; // 起点就是终点
 
     // 沿用原代码的 -1 作为不可达/无穷大
     vector<int64_t> vertex(n + 1, -1);
@@ -16,6 +19,7 @@ int64_t dijkstra_fib(vector<node>* graph, int n, int st, int ed) {
     nodes[st] = heap.insert(st, 0);
 
     while (!heap.empty()) {
+        // 取出距离最小的结点；它已经从堆里摘下来，用完必须 delete
         fib_node* minNode = heap.extractmin();
         int p = minNode->vertex;
         int64_t d = minNode->value;
@@ -45,9 +49,9 @@ int64_t dijkstra_fib(vector<node>* graph, int n, int st, int ed) {
                 if (vertex[v] == -1 || newDist < vertex[v]) {
                     vertex[v] = newDist;
                     if (nodes[v] == nullptr) {
-                        nodes[v] = heap.insert(v, newDist);
+                        nodes[v] = heap.insert(v, newDist); // 第一次到达 v
                     } else {
-                        heap.decreaseKey(nodes[v], newDist);
+                        heap.decreaseKey(nodes[v], newDist); // 已在堆里，直接改距离
                     }
                 }
             }
